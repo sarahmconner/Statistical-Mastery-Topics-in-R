@@ -1,0 +1,26 @@
+### Topic 1: Exploratory Data Analysis #######
+### Sarah Conner #########
+
+# load packages
+library(dplyr)
+library(janitor)
+
+
+# import data 
+cereal <- read.csv("/Users/sarahconner/Desktop/Personal/Github Repositories/Topic 1 - Exploratory Data Analysis/Data/cereal.csv") %>% clean_names()
+
+# get list of cereal names in cereal dataset
+cereal$name
+
+# get summary statistics of calories across all cereals in dataset 
+summary(cereal$calories)
+# mean number of calories per serving in cereal is 106.8, with a minimum number of 50 calories
+# and a max number of 160 calories per serving
+
+# view the top 10 rated cereals
+top_10 <- head(cereal[order(-cereal$rating),], n = 10)
+top_10
+  
+# compare the mean sugar content for the top 10 cereals compared to all cereals
+mean(top_10$sugars) # 1.3
+mean(cereal$sugars) # 6.92
